@@ -1,7 +1,7 @@
 /*
  * Implementation for Queue using linked-list
- * Author: <<YOUR STUDENT IDs AND NAMES HERE>>
- * Version: September 2021
+ * Author: Winston Stuart [496314]
+ * Version: October 2021
  *	
  *	YOU NEED TO MAKE CHANGES TO THIS FILE!
  */

@@ -1,7 +1,7 @@
 /*
  *	Tree Node ADT
- *	Author: <<YOUR STUDENT IDs AND NAMES HERE>>
- *	Version: September 2021
+ *	Author: Winston Stuart [496314]
+ *	Version: October 2021
  *	
  *	This file holds the Tree Node ADT which represents
  *	the nodes in a doubly-linked general tree.  Tree
