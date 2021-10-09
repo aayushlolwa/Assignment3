@@ -60,7 +60,18 @@ bool is_empty_stack(stack s)
 */
 void *top(stack s)
 {
-	// COMPLETE ME !
+	node current = s->tos;
+	node next = get_next_node(next);
+	if (is_empty_stack(current))
+	{
+		return NULL;
+	}
+	while (next != NULL)
+	{
+		current = next;
+		next = get_next_node(current);
+	};
+	return get_data_node(current);
 }
 
 /*
@@ -73,7 +84,20 @@ void *top(stack s)
 */
 void pop(stack s)
 {
-	// COMPLETE ME !
+	node current = s->tos;
+	node next = get_next_node(current);
+	if (is_empty_stack(current))
+	{
+		return;
+	}
+	while (next != NULL)
+	{
+		current = next;
+		next = get_next_node(current);
+	};
+	//since here is no next node current is the top node
+	free(current);
+	current = NULL;
 }
 
 /*
@@ -91,7 +115,16 @@ void pop(stack s)
 */
 void push(stack s, void *o)
 {
-	// COMPLETE ME !
+	node n;
+	node current = s->tos;
+	node next = get_next_node(current);
+	while (next != NULL)
+	{
+		current = next;
+		next = get_next_node(current);
+	};
+	init_node(&n, o);
+	set_next_node(current, n);
 }
 
 /*
