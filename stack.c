@@ -1,6 +1,6 @@
 /*
  * Implementation for Stack using linked-list
- * Author: Winston Stuart [496314]
+ * Author: Winston Stuart [496314],Aayush Shrestha [555625]
  * Version: October 2021
  *	
  *	YOU NEED TO MAKE CHANGES TO THIS FILE!
@@ -28,10 +28,10 @@ struct stack_int
 */
 void init_stack(stack *sp)
 {
-	node n;
+	node new_node; // new node to intialize the stack with
 	*sp = (stack)malloc(sizeof(struct stack_int));
-	init_node(&n, NULL);
-	(*sp)->tos = n;
+	init_node(&new_node, NULL);
+	(*sp)->tos = new_node;
 }
 
 /*
@@ -60,18 +60,7 @@ bool is_empty_stack(stack s)
 */
 void *top(stack s)
 {
-	node current = s->tos;
-	node next = get_next_node(next);
-	if (is_empty_stack(s))
-	{
-		return NULL;
-	}
-	while (next != NULL)
-	{
-		current = next;
-		next = get_next_node(current);
-	};
-	return get_data_node(current);
+	return get_data_node(s->tos);
 }
 
 /*
@@ -84,20 +73,15 @@ void *top(stack s)
 */
 void pop(stack s)
 {
-	node current = s->tos;
-	node next = get_next_node(current);
+	node current = s->tos;				// node at the top of the stack
+	node next = get_next_node(current); // node pointed by the node at top of the stack
 	if (is_empty_stack(s))
 	{
 		return;
 	}
-	while (next != NULL)
-	{
-		current = next;
-		next = get_next_node(current);
-	};
-	//since here is no next node current is the top node
 	free(current);
 	current = NULL;
+	s->tos = next;
 }
 
 /*
@@ -115,16 +99,13 @@ void pop(stack s)
 */
 void push(stack s, void *o)
 {
-	node n;
-	node current = s->tos;
-	node next = get_next_node(current);
-	while (next != NULL)
-	{
-		current = next;
-		next = get_next_node(current);
-	};
-	init_node(&n, o);
-	set_next_node(current, n);
+	node new_node;						// new node to be push onto the stack
+	node current = s->tos;				// node at the top of the stack
+	node next = get_next_node(current); // node pointed by the node at top of the stack
+
+	init_node(&new_node, o);
+	s->tos = new_node;
+	set_next_node(new_node, current);
 }
 
 /*

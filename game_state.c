@@ -1,6 +1,6 @@
 /*
 *	Game State ADT Implementation
-*	Author: Winston Stuart [496314]
+*	Author: Winston Stuart [496314],Aayush Shrestha [555625]
 *	Version: October 2021
 *
 *	This file holds the game_state ADT.  It comprises
@@ -61,7 +61,7 @@ square_state get_square(game_state g, int r, int c)
 {
 	trace("get_square: get_square starts and finishes");
 
-	return (g->board[r - 1][c - 1]);
+	return (g->board[r][c]);
 }
 
 /*
@@ -84,7 +84,7 @@ void set_square(game_state g, square_state s)
 	r = get_row(s);
 	c = get_column(s);
 
-	g->board[r - 1][c - 1] = s;
+	g->board[r][c] = s;
 
 	trace("set_square: set_square ends");
 }
@@ -105,9 +105,8 @@ void set_square(game_state g, square_state s)
 	*/
 bool valid(game_state g, int r, int c)
 {
-	// COMPLETE ME!
+	return (r < DIMENSION && r >= 0) && (c < DIMENSION && c >= 0);
 }
-
 /*
 * 	row_clear
 *	Check whether the indicated row is clear on the given board
@@ -123,7 +122,15 @@ bool valid(game_state g, int r, int c)
 */
 bool row_clear(game_state g, int r)
 {
-	// COMPLETE ME!
+	for (int c = 0; c < DIMENSION; c++)
+	{
+
+		if (occupied(get_square(g, r, c)))
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 /*
@@ -142,7 +149,14 @@ bool row_clear(game_state g, int r)
 */
 bool column_clear(game_state g, int c)
 {
-	// COMPLETE ME!
+	for (int r = 0; r < DIMENSION; r++)
+	{
+		if (occupied(get_square(g, r, c)))
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 /*
@@ -263,7 +277,7 @@ bool clash(game_state g, int r, int c)
 	*/
 bool taken(game_state g, int r, int c)
 {
-	// COMPLETE ME!
+	return occupied(get_square(g, r, c));
 }
 
 /*
@@ -280,7 +294,7 @@ bool taken(game_state g, int r, int c)
 */
 void land(game_state g, int r, int c)
 {
-	// COMPLETE ME!
+	occupy(get_square(g, r, c));
 }
 
 /*
@@ -334,9 +348,9 @@ void show_game_state(game_state g)
 
 		// print all columns
 		printf("|");
-		for (y = 1; y <= DIMENSION; y++)
+		for (y = 0; y < DIMENSION; y++)
 		{
-			show_square_state(g->board[x - 1][y - 1]);
+			show_square_state(g->board[x][y]);
 			printf("|");
 		}
 		printf("\n");

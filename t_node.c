@@ -1,6 +1,6 @@
 /*
  *	Tree Node ADT
- *	Author: Winston Stuart [496314]
+ *	Author: Winston Stuart [496314],Aayush Shrestha [555625]
  *	Version: October 2021
  *	
  *	This file holds the Tree Node ADT which represents
