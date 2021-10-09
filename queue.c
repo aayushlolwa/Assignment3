@@ -46,7 +46,15 @@ void init_queue(queue *qp)
 */
 bool is_empty_queue(queue q)
 {
-	COMPLETE ME!
+	if (q->first == NULL)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
 }
 
 
@@ -61,7 +69,7 @@ bool is_empty_queue(queue q)
 */
 void *front(queue q)
 {
-	COMPLETE ME!
+	return q->first;
 }
 
 
@@ -75,8 +83,7 @@ void *front(queue q)
 */
 void rear(queue q)
 {
-	COMPLETE ME!
-}
+	
 }
 
 
