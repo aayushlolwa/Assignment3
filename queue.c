@@ -47,15 +47,7 @@ void init_queue(queue *qp)
 */
 bool is_empty_queue(queue q)
 {
-	if (q->first == NULL)
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
+	return q->first == NULL;
 }
 
 /*
@@ -82,7 +74,6 @@ void *front(queue q)
 */
 void rear(queue q)
 {
-	
 }
 
 /*
@@ -98,7 +89,7 @@ void rear(queue q)
 */
 void add(queue q, void *o)
 {
-	COMPLETE ME !
+	// COMPLETE ME !
 }
 
 /*

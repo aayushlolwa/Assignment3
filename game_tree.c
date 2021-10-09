@@ -72,15 +72,7 @@ void init_game_tree(game_tree *tp, bool e, void *o, int l)
 */
 bool is_empty_game_tree(game_tree t)
 {
-	if (t->root == NULL)
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
+	return t->root == NULL;
 }
 
 /**

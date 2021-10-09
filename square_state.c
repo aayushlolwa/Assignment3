@@ -79,7 +79,6 @@ int get_column(square_state s)
 	return (s->column);
 }
 
-
 /*
 * 	set_row
 *	Set function for row field.
@@ -95,10 +94,9 @@ void set_row(square_state s, int r)
 	trace("set_row: set_row starts");
 
 	s->row = r;
-	
+
 	trace("set_row: set_row ends");
 }
-
 
 /*
  * 	set_column
@@ -129,17 +127,8 @@ void set_column(square_state s, int c)
 */
 bool occupied(square_state s)
 {
-	if (s->visited == true)
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
+	return s->visited;
 }
-
 
 /*
 * 	occupy
@@ -153,7 +142,6 @@ void occupy(square_state s)
 {
 	s->visited = true;
 }
-
 
 /*
  * 	show_square_state
