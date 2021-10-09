@@ -1,6 +1,6 @@
 /*
  *	Game Tree ADT Implementation
- *	Author: Winston Stuart [496314]
+ *	Author: Winston Stuart [496314],Aayush Shrestha [555625]
  *	Version: October 2021
  *	
  *	This file holds the game_tree ADT which is a
@@ -280,7 +280,7 @@ void generate_levelBF(game_tree t, queue q)
 */
 game_tree build_gameBF(game_tree t, queue q, int d)
 {
-	// COMPLETE ME !
+	// COMPLETE ME !x
 }
 
 /*
@@ -298,7 +298,12 @@ game_tree build_gameBF(game_tree t, queue q, int d)
 */
 void generate_levelDF(game_tree t, stack s)
 {
-	// COMPLETE ME !}
+	// COMPLETE ME !
+
+	// if (abs(row1 - row2) == abs(col1 - col2))
+	// {
+	// 	//check diagonals
+	// }
 }
 /*
 *	build_gameDF
@@ -324,7 +329,11 @@ void generate_levelDF(game_tree t, stack s)
 */
 game_tree build_gameDF(game_tree t, stack s, int d)
 {
-	// COMPLETE ME !
+	time_t tt;
+	srand((unsigned)time(&tt));
+	// square_state ss = get_square((game_state)get_data(t), 0, rand() % d);
+	land(g, 0, rand() % d);
+	generate_levelDF(t, s)
 }
 
 /*

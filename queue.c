@@ -1,6 +1,6 @@
 /*
  * Implementation for Queue using linked-list
- * Author: Winston Stuart [496314]
+ * Author: Winston Stuart [496314],Aayush Shrestha [555625]
  * Version: October 2021
  *	
  *	YOU NEED TO MAKE CHANGES TO THIS FILE!
@@ -28,11 +28,11 @@ struct queue_int
 */
 void init_queue(queue *qp)
 {
-	node q;
+	node new_node; // new node to initialize the queue with
 	*qp = (queue)malloc(sizeof(struct queue_int));
 
-	init_node(&q, NULL);
-	(*qp)->first = q;
+	init_node(&new_node, NULL);
+	(*qp)->first = new_node;
 }
 
 /*
@@ -75,8 +75,8 @@ void *front(queue q)
 void rear(queue q)
 {
 
-	node current = q->first;
-	node next = get_next_node(current);
+	node current = q->first;			// first node of the queue
+	node next = get_next_node(current); // node pointed by first node of the stack
 
 	if (is_empty_queue(q))
 	{
