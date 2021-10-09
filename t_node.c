@@ -48,9 +48,12 @@ struct t_node_int
 */
 void init_t_node(t_node *tp, void *o, int l)
 {
-	COMPLETE ME!
-}
+	(*tp)->child = NULL;
+	(*tp)->sibling = NULL;
+	(*tp)->level = l;
+	(*tp)->data = o;
 
+}
 
 /*
 	*	set_t_node_data

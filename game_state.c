@@ -9,19 +9,17 @@
 *	YOU NEED TO MAKE CHANGES TO THIS FILE!
 */
 
-
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "game_state.h"
 #include "assig_three221.h"
 
-
 // types
-struct game_state_int {
+struct game_state_int
+{
 	square_state board[DIMENSION][DIMENSION];
 };
-
 
 /*
 	*	init_game_state
@@ -34,9 +32,17 @@ struct game_state_int {
 */
 void init_game_state(game_state *gp)
 {
-	COMPLETE ME!
+	*gp = (game_state)malloc(sizeof(struct game_state_int));
+	for (int r = 0; r < DIMENSION; r++)
+	{
+		for (int c = 0; c < DIMENSION; c++)
+		{
+			square_state s;
+			init_square_state(&s, r, c);
+			(*gp)->board[r][c] = s;
+		}
+	}
 }
-
 
 /*
 	* 	get_square
@@ -58,7 +64,6 @@ square_state get_square(game_state g, int r, int c)
 	return (g->board[r - 1][c - 1]);
 }
 
-
 /*
 	* 	set_square
 	*	Set function for a square_state.
@@ -72,7 +77,7 @@ square_state get_square(game_state g, int r, int c)
 */
 void set_square(game_state g, square_state s)
 {
-	int r, c;	// row and column of given square_state
+	int r, c; // row and column of given square_state
 
 	trace("set_square: set_square starts");
 
@@ -83,7 +88,6 @@ void set_square(game_state g, square_state s)
 
 	trace("set_square: set_square ends");
 }
-
 
 /*
 	* 	valid
@@ -101,9 +105,8 @@ void set_square(game_state g, square_state s)
 	*/
 bool valid(game_state g, int r, int c)
 {
-	COMPLETE ME!
+	// COMPLETE ME!
 }
-
 
 /*
 * 	row_clear
@@ -120,9 +123,8 @@ bool valid(game_state g, int r, int c)
 */
 bool row_clear(game_state g, int r)
 {
-	COMPLETE ME!
+	// COMPLETE ME!
 }
-
 
 /*
 * 	column_clear
@@ -140,9 +142,8 @@ bool row_clear(game_state g, int r)
 */
 bool column_clear(game_state g, int c)
 {
-	COMPLETE ME!
+	// COMPLETE ME!
 }
-
 
 /*
 * 	diagonals_clear
@@ -164,7 +165,7 @@ bool column_clear(game_state g, int c)
 */
 bool diagonals_clear(game_state g, int r, int c)
 {
-	int x, y;	// row and column of given game_state
+	int x, y; // row and column of given game_state
 
 	trace("diagonals_clear: diagonals_clear starts");
 
@@ -219,7 +220,6 @@ bool diagonals_clear(game_state g, int r, int c)
 	return true;
 }
 
-
 /*
 * 	clash
 *	Check whether the row, column, and/or diagonals from the given
@@ -246,7 +246,6 @@ bool clash(game_state g, int r, int c)
 	return !(row_clear(g, r) && column_clear(g, c) && diagonals_clear(g, r, c));
 }
 
-
 /*
 	* 	taken
 	*	Check whether a square on the board has already been visited
@@ -264,9 +263,8 @@ bool clash(game_state g, int r, int c)
 	*/
 bool taken(game_state g, int r, int c)
 {
-	COMPLETE ME!
+	// COMPLETE ME!
 }
-
 
 /*
 * 	land
@@ -282,9 +280,8 @@ bool taken(game_state g, int r, int c)
 */
 void land(game_state g, int r, int c)
 {
-	COMPLETE ME!
+	// COMPLETE ME!
 }
-
 
 /*
 * 	clone
@@ -297,9 +294,8 @@ void land(game_state g, int r, int c)
 */
 game_state clone(game_state g)
 {
-	COMPLETE ME!
+	// COMPLETE ME!
 }
-
 
 /*
 	* 	show_game_state
@@ -335,7 +331,7 @@ void show_game_state(game_state g)
 		}
 		printf("\n");
 	}
-	
+
 	// print row separator
 	printf("+");
 	for (y = 1; y <= DIMENSION * 4 - 1; y++)

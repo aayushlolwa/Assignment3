@@ -11,12 +11,11 @@
 #include "node.h"
 #include "stack.h"
 
-
 // types
-struct stack_int {
+struct stack_int
+{
 	node tos;
 };
-
 
 /*
 *	init_stack
@@ -29,9 +28,11 @@ struct stack_int {
 */
 void init_stack(stack *sp)
 {
-	COMPLETE ME!
+	node n;
+	*sp = (stack)malloc(sizeof(struct stack_int));
+	init_node(&n, NULL);
+	(*sp)->tos = n;
 }
-
 
 /*
 *	is_empty_stack
@@ -45,9 +46,8 @@ void init_stack(stack *sp)
 */
 bool is_empty_stack(stack s)
 {
-	COMPLETE ME!
+	return s->tos == NULL;
 }
-
 
 /*
 *	top
@@ -60,9 +60,8 @@ bool is_empty_stack(stack s)
 */
 void *top(stack s)
 {
-	COMPLETE ME!
+	COMPLETE ME !
 }
-
 
 /*
 *	pop
@@ -74,9 +73,8 @@ void *top(stack s)
 */
 void pop(stack s)
 {
-	COMPLETE ME!
+	COMPLETE ME !
 }
-
 
 /*
 *	push
@@ -91,11 +89,10 @@ void pop(stack s)
 *
 *	Param o value to be added to top of stack
 */
-void push(stack s,void *o)
+void push(stack s, void *o)
 {
-	COMPLETE ME!
+	COMPLETE ME !
 }
-
 
 /*
 *	to_string_stack
@@ -113,20 +110,20 @@ char *to_string_stack(stack k, char *f)
 {
 	node c;
 	char *fmt = (char *)malloc(10 * sizeof(char));
-	char *s=(char *)malloc(100*10*sizeof(char));
-	
+	char *s = (char *)malloc(100 * 10 * sizeof(char));
+
 	if (is_empty_stack(k))
 	{
 		s = "<>";
 	}
-	else 
+	else
 	{
 		s[0] = '\0';
 		sprintf(fmt, "%%s%s", f);
 		c = k->tos;
 		while (c != NULL)
 		{
-			sprintf(s, fmt, s,*(int *)(get_data_node(c)));
+			sprintf(s, fmt, s, *(int *)(get_data_node(c)));
 			if (get_next_node(c) != NULL)
 			{
 				sprintf(s, "%s, ", s);

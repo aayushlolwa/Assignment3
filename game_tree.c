@@ -13,7 +13,6 @@
  *	YOU NEED TO MAKE CHANGES TO THIS FILE!
 */
 
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -22,17 +21,14 @@
 #include "game_tree.h"
 #include "assig_three221.h"
 
-
 // types
 struct game_tree_int
 {
-	t_node root;			// the node at the top of the tree
+	t_node root; // the node at the top of the tree
 };
 
-
 // global variable
-int thought = 0;	// to show 'thinking' -- i.e. that the program hasn't crashed
-
+int thought = 0; // to show 'thinking' -- i.e. that the program hasn't crashed
 
 /*
 	*	init_game_tree
@@ -47,11 +43,11 @@ int thought = 0;	// to show 'thinking' -- i.e. that the program hasn't crashed
 	*	Informally: creates either an empty tree or a leaf node as
 	*				required
 */
-void init_game_tree(game_tree *tp,bool e,void *o,int l)
+void init_game_tree(game_tree *tp, bool e, void *o, int l)
 {
 	trace("game_tree: initialiser starts");
-	
-	*tp=(game_tree)malloc(sizeof(struct game_tree_int));
+
+	*tp = (game_tree)malloc(sizeof(struct game_tree_int));
 	if (e)
 	{
 		(*tp)->root = NULL;
@@ -60,11 +56,10 @@ void init_game_tree(game_tree *tp,bool e,void *o,int l)
 	{
 		init_t_node(&((*tp)->root), o, l);
 	}
-		
+
 	trace("game_tree: initialiser ends");
 }
-	
-	
+
 /*
 	*	is_empty_game_tree
 	*	Emptiness test.
@@ -77,9 +72,8 @@ void init_game_tree(game_tree *tp,bool e,void *o,int l)
 */
 bool is_empty_game_tree(game_tree t)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-
 
 /**
 	*	get_data
@@ -94,18 +88,17 @@ bool is_empty_game_tree(game_tree t)
 void *get_data(game_tree t)
 {
 	trace("get_data: get_data starts");
-		
+
 	if (is_empty_game_tree(t))
 	{
-		fprintf(stderr,"get_data: empty game tree");
+		fprintf(stderr, "get_data: empty game tree");
 		exit(1);
 	}
 
 	trace("get_data: get_data ends");
 	return get_t_node_data(t->root);
 }
-	
-	
+
 /*
 	*	get_level
 	*	Get function for "root" instance variable's level value.
@@ -118,9 +111,8 @@ void *get_data(game_tree t)
 */
 int get_level(game_tree t)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-	
 
 /*
 *	get_child
@@ -152,7 +144,6 @@ game_tree get_child(game_tree t)
 	return c;
 }
 
-
 /*
 	* 	get_sibling
 	*	Get function for "root" instance variable's sibling value.
@@ -164,11 +155,10 @@ game_tree get_child(game_tree t)
 	*
 	*	return game_tree the next sibling of the current node
 */
-game_tree get_sibling(game_tree t) 
+game_tree get_sibling(game_tree t)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-
 
 /*
 	*	set_data
@@ -181,22 +171,21 @@ game_tree get_sibling(game_tree t)
 	*
 	*	param o void * to install as data for root node
 */
-void set_data(game_tree t,void *o)
+void set_data(game_tree t, void *o)
 {
 	trace("set_data: set_data starts");
-		
+
 	if (is_empty_game_tree(t))
 	{
-		fprintf(stderr,"set_data: empty game tree");
+		fprintf(stderr, "set_data: empty game tree");
 		exit(1);
 	}
-		
-	set_t_node_data(t->root,o);
-		
+
+	set_t_node_data(t->root, o);
+
 	trace("set_data: set_data ends");
 }
-		
-	
+
 /*
 	*	set_level
 	*	Set function for "root" instance variable's level field.
@@ -208,12 +197,11 @@ void set_data(game_tree t,void *o)
 	*
 	*	param l level number for root of current game tree
 */
-void set_level(game_tree t,int l)
+void set_level(game_tree t, int l)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-	
-	
+
 /*
 	*	set_child
 	*	Set function for "root" instance variable's child field.
@@ -227,9 +215,8 @@ void set_level(game_tree t,int l)
 */
 void set_child(game_tree t, game_tree c)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-
 
 /*
 	*	set_sibling
@@ -242,12 +229,11 @@ void set_child(game_tree t, game_tree c)
 	*
 	*	param s game_tree to be set as next sibling of current game tree
 */
-void set_sibling(game_tree t,game_tree s)
+void set_sibling(game_tree t, game_tree s)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-	
-	
+
 /*
 *	generate_levelBF
 *	Generate the next level of the tree in a breadth-first manner
@@ -263,10 +249,8 @@ void set_sibling(game_tree t,game_tree s)
 */
 void generate_levelBF(game_tree t, queue q)
 {
-	COMPLETE ME!
+	// COMPLETE ME !}
 }
-
-
 /*
 *	build_gameBF
 *	Generate the game tree in a breadth-first manner
@@ -291,9 +275,8 @@ void generate_levelBF(game_tree t, queue q)
 */
 game_tree build_gameBF(game_tree t, queue q, int d)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-
 
 /*
 *	generate_levelDF
@@ -310,10 +293,8 @@ game_tree build_gameBF(game_tree t, queue q, int d)
 */
 void generate_levelDF(game_tree t, stack s)
 {
-	COMPLETE ME!
+	// COMPLETE ME !}
 }
-
-
 /*
 *	build_gameDF
 *	Generate the game tree in a depth-first manner
@@ -338,9 +319,8 @@ void generate_levelDF(game_tree t, stack s)
 */
 game_tree build_gameDF(game_tree t, stack s, int d)
 {
-	COMPLETE ME!
+	// COMPLETE ME !
 }
-
 
 /*
 	*	to_string_game_tree
@@ -360,7 +340,7 @@ char *to_string_game_tree(game_tree t)
 	char *s;
 
 	trace("to_string_game_tree: to_string_game_tree starts");
-		
+
 	if (is_empty_game_tree(t))
 	{
 		trace("to_string_game_tree: to_string_game_tree ends");
@@ -368,23 +348,21 @@ char *to_string_game_tree(game_tree t)
 	}
 	else
 	{
-		s=(char *)malloc(200*5*sizeof(char));
+		s = (char *)malloc(200 * 5 * sizeof(char));
 
-		sprintf(s,"%s (%d,%d) ",s,get_row(get_data(t)),get_column(get_data(t)));
-		c=get_child(t);
-		if (! is_empty_game_tree(c))
+		sprintf(s, "%s (%d,%d) ", s, get_row(get_data(t)), get_column(get_data(t)));
+		c = get_child(t);
+		if (!is_empty_game_tree(c))
 		{
-			sprintf(s,"%s %s ",s,to_string_game_tree(c));
+			sprintf(s, "%s %s ", s, to_string_game_tree(c));
 		}
-		c=get_sibling(t);
-		if (! is_empty_game_tree(c))
+		c = get_sibling(t);
+		if (!is_empty_game_tree(c))
 		{
-			sprintf(s,"%s %s ",s,to_string_game_tree(c));
+			sprintf(s, "%s %s ", s, to_string_game_tree(c));
 		}
 	}
 
 	trace("to_string_game_tree: to_string_game_tree ends");
-
 	return s;
 }
-

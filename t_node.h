@@ -16,7 +16,7 @@
 struct t_node_int;
 typedef struct t_node_int *t_node;
 
-void init_t_node(t_node *tp, void *o, int l);
+void init_t_node(t_node *tp, void *o, int l); //why pointer here at tp
 void set_t_node_data(t_node t, void *o);
 void *get_t_node_data(t_node t);
 void set_t_node_level(t_node t, int l);
