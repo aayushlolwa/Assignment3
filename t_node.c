@@ -13,11 +13,9 @@
  *	YOU NEED TO MAKE CHANGES TO THIS FILE!
  */
 
-
 #include <stdlib.h>
 #include "assig_three221.h"
 #include "t_node.h"
-
 
 //types
 struct t_node_int
@@ -25,9 +23,8 @@ struct t_node_int
 	void *data;		// the value stored in the node
 	int level;		// the level of the current node
 	t_node child;	// the eldest child node of the current node
-	t_node sibling;	// the next eldest node of the current node
+	t_node sibling; // the next eldest node of the current node
 };
-
 
 /*
 	*	init_t_node
@@ -48,11 +45,11 @@ struct t_node_int
 */
 void init_t_node(t_node *tp, void *o, int l)
 {
+	*tp = (t_node)malloc(sizeof(struct t_node_int));
 	(*tp)->child = NULL;
 	(*tp)->sibling = NULL;
 	(*tp)->level = l;
 	(*tp)->data = o;
-
 }
 
 /*
@@ -70,8 +67,7 @@ void set_t_node_data(t_node t, void *o)
 {
 	t->data = o;
 }
-	
-	
+
 /*
 	*	set_t_node_level
 	*	Set function for "level" field.
@@ -87,8 +83,7 @@ void set_t_node_level(t_node t, int l)
 {
 	t->level = l;
 }
-	
-	
+
 /*
 	*	set_t_node_child
 	*	Set function for "child" field.
@@ -104,8 +99,7 @@ void set_t_node_child(t_node t, t_node n)
 {
 	t->child = n;
 }
-	
-	
+
 /*
 *	set_t_node_sibling
 *	Set function for "sibling" field.
@@ -122,7 +116,6 @@ void set_t_node_sibling(t_node t, t_node n)
 	t->sibling = n;
 }
 
-
 /*
 	*	get_t_node_data
 	*	Get function for "data" field.
@@ -137,8 +130,7 @@ void *get_t_node_data(t_node t)
 {
 	return t->data;
 }
-	
-	
+
 /*
 	*	get_t_node_level
 	*	Get function for "level" field.
@@ -154,8 +146,7 @@ int get_t_node_level(t_node t)
 {
 	return t->level;
 }
-	
-	
+
 /*
 	*	get_t_node_child
 	*	Get function for "child" field.
@@ -171,8 +162,7 @@ t_node get_t_node_child(t_node t)
 {
 	return t->child;
 }
-	
-	
+
 /*
 *	get_t_node_sibling
 *	Get function for "sibling" field.
