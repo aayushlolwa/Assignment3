@@ -294,7 +294,17 @@ void land(game_state g, int r, int c)
 */
 game_state clone(game_state g)
 {
-	// COMPLETE ME!
+	game_state gg;
+	gg = (game_state)malloc(sizeof(struct game_state_int));
+
+	for (int r = 0; r < DIMENSION; r++)
+	{
+		for (int c = 0; c < DIMENSION; c++)
+		{
+			gg->board[r][c] = g->board[r][c];
+		}
+	}
+	return gg;
 }
 
 /*

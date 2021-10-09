@@ -60,7 +60,7 @@ bool is_empty_stack(stack s)
 */
 void *top(stack s)
 {
-	COMPLETE ME !
+	// COMPLETE ME !
 }
 
 /*
@@ -73,7 +73,7 @@ void *top(stack s)
 */
 void pop(stack s)
 {
-	COMPLETE ME !
+	// COMPLETE ME !
 }
 
 /*
@@ -91,7 +91,7 @@ void pop(stack s)
 */
 void push(stack s, void *o)
 {
-	COMPLETE ME !
+	// COMPLETE ME !
 }
 
 /*
