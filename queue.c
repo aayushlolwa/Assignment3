@@ -74,6 +74,19 @@ void *front(queue q)
 */
 void rear(queue q)
 {
+	node current = q->first;
+	node next = get_next_node(next);
+	if (is_empty_queue(current))
+	{
+		return;
+	}
+	while (next != NULL)
+	{
+		current = next;
+		next = get_next_node(current);
+	};
+	free(current);
+	current = NULL;
 }
 
 /*
@@ -89,7 +102,16 @@ void rear(queue q)
 */
 void add(queue q, void *o)
 {
-	// COMPLETE ME !
+	node n;
+	node current = q->first;
+	node next = get_next_node(next);
+	while (next != NULL)
+	{
+		current = next;
+		next = get_next_node(current);
+	};
+	init_node(&n, o);
+	set_next_node(current, n);
 }
 
 /*
