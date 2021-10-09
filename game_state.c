@@ -1,7 +1,7 @@
 /*
 *	Game State ADT Implementation
-*	Author: <<YOUR STUDENT IDs AND NAMES HERE>>
-*	Version: September 2021
+*	Author: Winston Stuart [496314]
+*	Version: October 2021
 *
 *	This file holds the game_state ADT.  It comprises
 *	the board (as a two-dimensional array called "board").

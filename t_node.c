@@ -1,7 +1,7 @@
 /*
  *	Tree Node ADT
- *	Author: <<YOUR STUDENT IDs AND NAMES HERE>>
- *	Version: September 2021
+ *	Author: Winston Stuart [496314]
+ *	Version: October 2021
  *	
  *	This file holds the Tree Node ADT which represents
  *	the nodes in a doubly-linked general tree.  Tree
@@ -65,7 +65,7 @@ void init_t_node(t_node *tp, void *o, int l)
 */
 void set_t_node_data(t_node t, void *o)
 {
-	COMPLETE ME!
+	t->data = o;
 }
 	
 	
@@ -82,7 +82,7 @@ void set_t_node_data(t_node t, void *o)
 */
 void set_t_node_level(t_node t, int l)
 {
-	COMPLETE ME!
+	t->level = l;
 }
 	
 	
@@ -99,7 +99,7 @@ void set_t_node_level(t_node t, int l)
 */
 void set_t_node_child(t_node t, t_node n)
 {
-	COMPLETE ME!
+	t->child = n;
 }
 	
 	
@@ -116,7 +116,7 @@ void set_t_node_child(t_node t, t_node n)
 */
 void set_t_node_sibling(t_node t, t_node n)
 {
-	COMPLETE ME!
+	t->sibling = n;
 }
 
 
@@ -132,7 +132,7 @@ void set_t_node_sibling(t_node t, t_node n)
 */
 void *get_t_node_data(t_node t)
 {
-	COMPLETE ME!
+	return t->data;
 }
 	
 	
@@ -149,7 +149,7 @@ void *get_t_node_data(t_node t)
 */
 int get_t_node_level(t_node t)
 {
-	COMPLETE ME!
+	return t->level;
 }
 	
 	
@@ -166,7 +166,7 @@ int get_t_node_level(t_node t)
 */
 t_node get_t_node_child(t_node t)
 {
-	COMPLETE ME!
+	return t->child;
 }
 	
 	
@@ -183,5 +183,5 @@ t_node get_t_node_child(t_node t)
 */
 t_node get_t_node_sibling(t_node t)
 {
-	COMPLETE ME!
+	return t->sibling;
 }

@@ -1,13 +1,14 @@
 /*
 *	Square State ADT Implementation
-*	Author: <<YOUR STUDENT IDs AND NAMES HERE>>
-*	Version: September 2021
+*	Author: Winston Stuart [496314]
+*	Version: October 2021
 *
 *	This file holds the square_state ADT.  It comprises
 *	the coordinate of square (as "row" and "column"),
 *	and whether or not the square is occupied.
-*
-*	YOU NEED TO MAKE CHANGES TO THIS FILE!
+* 
+*	Completed Oct 8, 2021
+* 
 */
 
 
@@ -81,7 +82,7 @@ int get_row(square_state s)
 */
 int get_column(square_state s)
 {
-	COMPLETE ME!
+	return (s->column);
 }
 
 
@@ -97,7 +98,11 @@ int get_column(square_state s)
 */
 void set_row(square_state s, int r)
 {
-	COMPLETE ME!
+	trace("set_row: set_row starts");
+
+	s->row = r;
+	
+	trace("set_row: set_row ends");
 }
 
 
@@ -131,7 +136,15 @@ void set_column(square_state s, int c)
 */
 bool occupied(square_state s)
 {
-	COMPLETE ME!
+	if (s->visited == true)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
 }
 
 
@@ -145,7 +158,7 @@ bool occupied(square_state s)
 */
 void occupy(square_state s)
 {
-	COMPLETE ME!
+	s->visited = true;
 }
 
 
