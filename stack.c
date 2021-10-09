@@ -62,7 +62,7 @@ void *top(stack s)
 {
 	node current = s->tos;
 	node next = get_next_node(next);
-	if (is_empty_stack(current))
+	if (is_empty_stack(s))
 	{
 		return NULL;
 	}
@@ -86,7 +86,7 @@ void pop(stack s)
 {
 	node current = s->tos;
 	node next = get_next_node(current);
-	if (is_empty_stack(current))
+	if (is_empty_stack(s))
 	{
 		return;
 	}

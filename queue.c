@@ -78,7 +78,7 @@ void rear(queue q)
 	node current = q->first;
 	node next = get_next_node(current);
 
-	if (is_empty_queue(current))
+	if (is_empty_queue(q))
 	{
 		return;
 	}
