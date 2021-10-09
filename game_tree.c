@@ -1,7 +1,7 @@
 /*
  *	Game Tree ADT Implementation
- *	Author: <<YOUR STUDENT IDs AND NAMES HERE>>
- *	Version: September 2021
+ *	Author: Winston Stuart [496314]
+ *	Version: October 2021
  *	
  *	This file holds the game_tree ADT which is a
  *	general game tree.  The game_tree is built using
@@ -10,8 +10,8 @@
  *	which has a "data" field and "child" and
  *	"sibling" references, and a "level" value.
  *	
- *	YOU NEED TO MAKE CHANGES TO THIS FILE!
-*/
+ *	Completed-ish on Oct 8, 2021
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -72,7 +72,15 @@ void init_game_tree(game_tree *tp, bool e, void *o, int l)
 */
 bool is_empty_game_tree(game_tree t)
 {
-	// COMPLETE ME !
+	if (t->root == NULL)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
 }
 
 /**
@@ -111,7 +119,7 @@ void *get_data(game_tree t)
 */
 int get_level(game_tree t)
 {
-	// COMPLETE ME !
+	return get_t_node_level(t->root);
 }
 
 /*
@@ -157,7 +165,12 @@ game_tree get_child(game_tree t)
 */
 game_tree get_sibling(game_tree t)
 {
-	// COMPLETE ME !
+	game_tree s;
+
+	init_game_tree(&s, true, NULL, -1);
+	s->root = get_t_node_sibling(t->root);
+
+	return s;
 }
 
 /*
@@ -199,7 +212,7 @@ void set_data(game_tree t, void *o)
 */
 void set_level(game_tree t, int l)
 {
-	// COMPLETE ME !
+	set_t_node_level(t->root, l);
 }
 
 /*
@@ -215,7 +228,7 @@ void set_level(game_tree t, int l)
 */
 void set_child(game_tree t, game_tree c)
 {
-	// COMPLETE ME !
+	set_t_node_child(t->root, c);
 }
 
 /*
@@ -231,7 +244,7 @@ void set_child(game_tree t, game_tree c)
 */
 void set_sibling(game_tree t, game_tree s)
 {
-	// COMPLETE ME !
+	set_t_node_sibling(t->root, s);
 }
 
 /*

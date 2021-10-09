@@ -1,14 +1,15 @@
 /*
- *	Square State ADT Implementation
- *	Author: <<YOUR STUDENT IDs AND NAMES HERE>>
- *	Version: September 2021
- *
- *	This file holds the square_state ADT.  It comprises
- *	the coordinate of square (as "row" and "column"),
- *	and whether or not the square is occupied.
- *
- *	YOU NEED TO MAKE CHANGES TO THIS FILE!
- */
+*	Square State ADT Implementation
+*	Author: Winston Stuart [496314]
+*	Version: October 2021
+*
+*	This file holds the square_state ADT.  It comprises
+*	the coordinate of square (as "row" and "column"),
+*	and whether or not the square is occupied.
+* 
+*	Completed Oct 8, 2021
+* 
+*/
 
 #include "square_state.h"
 #include "assig_three221.h"
@@ -64,28 +65,40 @@ int get_row(square_state s)
 }
 
 /*
- * 	get_column
- *	Get function for column field.
- *	Pre-condition: none
- *	Post-condition: the value of the square_state variable's column
- *					field is returned
- *	Informally: return the square_state variable's column
- *
- *	return int the current column number of the square
- */
-int get_column(square_state s) { COMPLETE ME ! }
+* 	get_column
+*	Get function for column field.
+*	Pre-condition: none
+*	Post-condition: the value of the square_state variable's column
+*					field is returned
+*	Informally: return the square_state variable's column
+*
+*	return int the current column number of the square
+*/
+int get_column(square_state s)
+{
+	return (s->column);
+}
+
 
 /*
- * 	set_row
- *	Set function for row field.
- *	Pre-condition: the given square_state is defined
- *	Post-condition: the value of the square_state variable's row
- *					field is updated to the given int value
- *	Informally: update the square_state variable's row
- *
- * Param r int value to be placed into the square_state's row field
- */
-void set_row(square_state s, int r) { COMPLETE ME ! }
+* 	set_row
+*	Set function for row field.
+*	Pre-condition: the given square_state is defined 
+*	Post-condition: the value of the square_state variable's row
+*					field is updated to the given int value
+*	Informally: update the square_state variable's row
+*
+* Param r int value to be placed into the square_state's row field
+*/
+void set_row(square_state s, int r)
+{
+	trace("set_row: set_row starts");
+
+	s->row = r;
+	
+	trace("set_row: set_row ends");
+}
+
 
 /*
  * 	set_column
@@ -107,24 +120,40 @@ void set_column(square_state s, int c)
 }
 
 /*
- * 	occupied
- *	Check whether the square_state has already been occupied
- *	Pre-condition: the given square_state is defined
- *	Post-condition: true is returned if the square has been visited
- *					(i.e. is true, and false is returned
- *otherwise) Informally: Return whether or not a square has been taken
- */
-bool occupied(square_state s) { COMPLETE ME ! }
+* 	occupied
+*	Check whether the square_state has already been occupied
+*	Pre-condition: the given square_state is defined 
+*	Post-condition: true is returned if the square has been visited
+*					(i.e. is true, and false is returned otherwise)
+*	Informally: Return whether or not a square has been taken
+*/
+bool occupied(square_state s)
+{
+	if (s->visited == true)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
+}
+
 
 /*
- * 	occupy
- *	Set function for visited field.
- *	Pre-condition: the given square_state is defined
- *	Post-condition: the value of the square_state variable's visited
- *					field is updated to true
- *	Informally: vist this square_state variable
- */
-void occupy(square_state s) { COMPLETE ME ! }
+* 	occupy
+*	Set function for visited field.
+*	Pre-condition: the given square_state is defined
+*	Post-condition: the value of the square_state variable's visited
+*					field is updated to true
+*	Informally: vist this square_state variable
+*/
+void occupy(square_state s)
+{
+	s->visited = true;
+}
+
 
 /*
  * 	show_square_state

@@ -1,7 +1,7 @@
 /*
  * Implementation for Queue using linked-list
- * Author: <<YOUR STUDENT IDs AND NAMES HERE>>
- * Version: September 2021
+ * Author: Winston Stuart [496314]
+ * Version: October 2021
  *	
  *	YOU NEED TO MAKE CHANGES TO THIS FILE!
  */
@@ -47,7 +47,15 @@ void init_queue(queue *qp)
 */
 bool is_empty_queue(queue q)
 {
-	COMPLETE ME !
+	if (q->first == NULL)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
 }
 
 /*
@@ -61,7 +69,7 @@ bool is_empty_queue(queue q)
 */
 void *front(queue q)
 {
-	COMPLETE ME !
+	return q->first;
 }
 
 /*
@@ -74,8 +82,7 @@ void *front(queue q)
 */
 void rear(queue q)
 {
-	COMPLETE ME !
-}
+	
 }
 
 /*
