@@ -122,10 +122,10 @@ bool valid(game_state g, int r, int c)
 */
 bool row_clear(game_state g, int r)
 {
-	for (int c = 0; c < DIMENSION; c++)
+	for (int c = 1; c <= DIMENSION; c++)
 	{
 
-		if (occupied(get_square(g, r, c)))
+		if (taken(g, r, c))
 		{
 			return false;
 		}
@@ -149,9 +149,9 @@ bool row_clear(game_state g, int r)
 */
 bool column_clear(game_state g, int c)
 {
-	for (int r = 0; r < DIMENSION; r++)
+	for (int r = 1; r <= DIMENSION; r++)
 	{
-		if (occupied(get_square(g, r, c)))
+		if (taken(g, r, c)))
 		{
 			return false;
 		}
