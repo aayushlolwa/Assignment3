@@ -61,7 +61,7 @@ square_state get_square(game_state g, int r, int c)
 {
 	trace("get_square: get_square starts and finishes");
 
-	return (g->board[r][c]);
+	return (g->board[r - 1][c - 1]);
 }
 
 /*
@@ -84,7 +84,7 @@ void set_square(game_state g, square_state s)
 	r = get_row(s);
 	c = get_column(s);
 
-	g->board[r][c] = s;
+	g->board[r - 1][c - 1] = s;
 
 	trace("set_square: set_square ends");
 }
@@ -105,7 +105,7 @@ void set_square(game_state g, square_state s)
 	*/
 bool valid(game_state g, int r, int c)
 {
-	return (r < DIMENSION && r >= 0) && (c < DIMENSION && c >= 0);
+	return (r <= DIMENSION && r >= 1) && (c <= DIMENSION && c >= 1);
 }
 /*
 * 	row_clear
@@ -308,17 +308,17 @@ void land(game_state g, int r, int c)
 */
 game_state clone(game_state g)
 {
-	game_state gg;
-	gg = (game_state)malloc(sizeof(struct game_state_int));
+	game_state cloned_game_state; // clone `game_state` onto this variable
+	cloned_game_state = (game_state)malloc(sizeof(struct game_state_int));
 
-	for (int r = 0; r < DIMENSION; r++)
+	for (int r = 1; r <= DIMENSION; r++)
 	{
-		for (int c = 0; c < DIMENSION; c++)
+		for (int c = 1; c <= DIMENSION; c++)
 		{
-			gg->board[r][c] = g->board[r][c];
+			cloned_game_state->board[r - 1][c - 1] = g->board[r - 1][c - 1];
 		}
 	}
-	return gg;
+	return cloned_game_state;
 }
 
 /*
@@ -348,9 +348,9 @@ void show_game_state(game_state g)
 
 		// print all columns
 		printf("|");
-		for (y = 0; y < DIMENSION; y++)
+		for (y = 1; y <= DIMENSION; y++)
 		{
-			show_square_state(g->board[x][y]);
+			show_square_state(g->board[x - 1][y - 1]);
 			printf("|");
 		}
 		printf("\n");
