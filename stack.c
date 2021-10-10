@@ -28,10 +28,8 @@ struct stack_int
 */
 void init_stack(stack *sp)
 {
-	node new_node; // new node to intialize the stack with
 	*sp = (stack)malloc(sizeof(struct stack_int));
-	init_node(&new_node, NULL);
-	(*sp)->tos = new_node;
+	(*sp)->tos = NULL;
 }
 
 /*

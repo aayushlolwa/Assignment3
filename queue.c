@@ -28,11 +28,8 @@ struct queue_int
 */
 void init_queue(queue *qp)
 {
-	node new_node; // new node to initialize the queue with
 	*qp = (queue)malloc(sizeof(struct queue_int));
-
-	init_node(&new_node, NULL);
-	(*qp)->first = new_node;
+	(*qp)->first = NULL;
 }
 
 /*
