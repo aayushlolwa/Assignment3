@@ -33,13 +33,13 @@ struct game_state_int
 void init_game_state(game_state *gp)
 {
 	*gp = (game_state)malloc(sizeof(struct game_state_int));
-	for (int r = 0; r < DIMENSION; r++)
+	for (int r = 1; r <= DIMENSION; r++)
 	{
-		for (int c = 0; c < DIMENSION; c++)
+		for (int c = 1; c <= DIMENSION; c++)
 		{
 			square_state s;
 			init_square_state(&s, r, c);
-			(*gp)->board[r][c] = s;
+			(*gp)->board[r - 1][c - 1] = s;
 		}
 	}
 }
@@ -152,9 +152,9 @@ bool column_clear(game_state g, int c)
 	for (int r = 1; r <= DIMENSION; r++)
 	{
 		if (taken(g, r, c)))
-		{
-			return false;
-		}
+			{
+				return false;
+			}
 	}
 	return true;
 }
