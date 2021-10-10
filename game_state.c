@@ -30,6 +30,7 @@ struct game_state_int
 	*					the board table is created empty
 	*	Informally: creates an initial game_state
 */
+
 void init_game_state(game_state *gp)
 {
 	*gp = (game_state)malloc(sizeof(struct game_state_int));
@@ -43,7 +44,6 @@ void init_game_state(game_state *gp)
 		}
 	}
 }
-
 /*
 	* 	get_square
 	*	Get function for a square_state.
@@ -60,8 +60,8 @@ void init_game_state(game_state *gp)
 square_state get_square(game_state g, int r, int c)
 {
 	trace("get_square: get_square starts and finishes");
-
-	return (g->board[r - 1][c - 1]);
+	
+	return g->board[r - 1][c - 1];
 }
 
 /*
@@ -151,10 +151,10 @@ bool column_clear(game_state g, int c)
 {
 	for (int r = 1; r <= DIMENSION; r++)
 	{
-		if (taken(g, r, c)))
-			{
-				return false;
-			}
+		if (taken(g, r, c))
+		{
+			return false;
+		}
 	}
 	return true;
 }
@@ -256,7 +256,6 @@ bool diagonals_clear(game_state g, int r, int c)
 bool clash(game_state g, int r, int c)
 {
 	trace("clash: clash starts and finishes");
-
 	return !(row_clear(g, r) && column_clear(g, c) && diagonals_clear(g, r, c));
 }
 

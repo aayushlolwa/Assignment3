@@ -14,6 +14,7 @@
 #include <stdbool.h>
 #include "queue.h"
 #include "stack.h"
+#include "t_node.h"
 
 struct game_tree_int;
 typedef struct game_tree_int *game_tree;
@@ -24,9 +25,9 @@ void set_data(game_tree g, void *o);
 void *get_data(game_tree g);
 void set_level(game_tree g, int l);
 int get_level(game_tree g);
-void set_child(game_tree g, game_tree c);
+void set_child(game_tree g, t_node c);
 game_tree get_child(game_tree g);
-void set_sibling(game_tree g, game_tree s);
+void set_sibling(game_tree g, t_node s);
 game_tree get_sibling(game_tree g);
 void generate_levelBF(game_tree g, queue q);
 game_tree build_gameBF(game_tree g, queue q, int d);
