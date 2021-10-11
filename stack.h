@@ -21,5 +21,6 @@ bool is_empty_stack(stack s);
 void push(stack s, void *i);
 void *top(stack s);
 void pop(stack s);
+int size(stack s);
 
 #endif

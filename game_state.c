@@ -59,8 +59,8 @@ void init_game_state(game_state *gp)
 */
 square_state get_square(game_state g, int r, int c)
 {
-	trace("get_square: get_square starts and finishes");
-	
+	// trace("get_square: get_square starts and finishes");
+
 	return g->board[r - 1][c - 1];
 }
 
@@ -105,7 +105,8 @@ void set_square(game_state g, square_state s)
 	*/
 bool valid(game_state g, int r, int c)
 {
-	return (r <= DIMENSION && r >= 1) && (c <= DIMENSION && c >= 1);
+
+	return ((r <= DIMENSION) && (r >= 1)) && ((c <= DIMENSION) && (c >= 1));
 }
 /*
 * 	row_clear
@@ -181,7 +182,7 @@ bool diagonals_clear(game_state g, int r, int c)
 {
 	int x, y; // row and column of given game_state
 
-	trace("diagonals_clear: diagonals_clear starts");
+	// trace("diagonals_clear: diagonals_clear starts");
 
 	x = r;
 	y = c;
@@ -191,13 +192,13 @@ bool diagonals_clear(game_state g, int r, int c)
 		y--;
 	}
 
-	trace("diagonals_clear: found top left");
+	// trace("diagonals_clear: found top left");
 
 	while ((x <= DIMENSION) && (y <= DIMENSION))
 	{
 		if (taken(g, x, y))
 		{
-			trace("diagonals_clear: diagonals_clear finishes with false");
+			// trace("diagonals_clear: diagonals_clear finishes with false");
 
 			return false;
 		}
@@ -205,7 +206,7 @@ bool diagonals_clear(game_state g, int r, int c)
 		y++;
 	}
 
-	trace("diagonals_clear: diagonals_clear left diagonal clear");
+	// trace("diagonals_clear: diagonals_clear left diagonal clear");
 
 	x = r;
 	y = c;
@@ -215,13 +216,13 @@ bool diagonals_clear(game_state g, int r, int c)
 		y++;
 	}
 
-	trace("diagonals_clear: found top right");
+	// trace("diagonals_clear: found top right");
 
 	while ((x <= DIMENSION) && (y <= DIMENSION))
 	{
 		if (taken(g, x, y))
 		{
-			trace("diagonals_clear: diagonals_clear finishes with false");
+			// trace("diagonals_clear: diagonals_clear finishes with false");
 
 			return false;
 		}
@@ -229,7 +230,7 @@ bool diagonals_clear(game_state g, int r, int c)
 		y--;
 	}
 
-	trace("diagonals_clear: diagonals_clear finishes with true");
+	// trace("diagonals_clear: diagonals_clear finishes with true");
 
 	return true;
 }
@@ -255,7 +256,7 @@ bool diagonals_clear(game_state g, int r, int c)
 */
 bool clash(game_state g, int r, int c)
 {
-	trace("clash: clash starts and finishes");
+	// trace("clash: clash starts and finishes");
 	return !(row_clear(g, r) && column_clear(g, c) && diagonals_clear(g, r, c));
 }
 
@@ -307,6 +308,8 @@ void land(game_state g, int r, int c)
 */
 game_state clone(game_state g)
 {
+	square_state f;
+	square_state gg;
 	game_state cloned_game_state; // clone `game_state` onto this variable
 	cloned_game_state = (game_state)malloc(sizeof(struct game_state_int));
 
@@ -314,9 +317,14 @@ game_state clone(game_state g)
 	{
 		for (int c = 1; c <= DIMENSION; c++)
 		{
-			cloned_game_state->board[r - 1][c - 1] = g->board[r - 1][c - 1];
+
+			init_square_state(&f, r, c);
+			gg = g->board[r - 1][c - 1];
+			set_visited(f, occupied(gg));
+			cloned_game_state->board[r - 1][c - 1] = f;
 		}
 	}
+
 	return cloned_game_state;
 }
 

@@ -19,6 +19,7 @@ typedef struct square_state_int *square_state;
 void init_square_state(square_state *sp, int r, int c);
 void set_row(square_state s, int r);
 void set_column(square_state s, int c);
+void set_visited(square_state s, bool v);
 int get_row(square_state s);
 int get_column(square_state s);
 bool occupied(square_state s);
