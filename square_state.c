@@ -38,13 +38,13 @@ struct square_state_int
  */
 void init_square_state(square_state *sp, int r, int c)
 {
-	trace("init_square_state: init_square_state starts");
+	// trace("init_square_state: init_square_state starts");
 	*sp = (square_state)malloc(sizeof(struct square_state_int));
 	(*sp)->row = r;
 	(*sp)->column = c;
 	(*sp)->visited = false;
 
-	trace("init_square_state: init_square_state ends");
+	// trace("init_square_state: init_square_state ends");
 }
 
 /*
@@ -59,7 +59,7 @@ void init_square_state(square_state *sp, int r, int c)
  */
 int get_row(square_state s)
 {
-	trace("get_row: get_row starts and finishes");
+	// trace("get_row: get_row starts and finishes");
 
 	return (s->row);
 }
@@ -91,11 +91,11 @@ int get_column(square_state s)
 */
 void set_row(square_state s, int r)
 {
-	trace("set_row: set_row starts");
+	// trace("set_row: set_row starts");
 
 	s->row = r;
 
-	trace("set_row: set_row ends");
+	// trace("set_row: set_row ends");
 }
 
 /*
@@ -110,13 +110,18 @@ void set_row(square_state s, int r)
  */
 void set_column(square_state s, int c)
 {
-	trace("set_column: set_column starts");
+	// trace("set_column: set_column starts");
 
 	s->column = c;
 
-	trace("set_column: set_column ends");
+	// trace("set_column: set_column ends");
 }
 
+void set_visited(square_state s, bool v)
+{
+	// TODO
+	s->visited = v;
+}
 /*
 * 	occupied
 *	Check whether the square_state has already been occupied
@@ -153,7 +158,7 @@ void occupy(square_state s)
  */
 void show_square_state(square_state s)
 {
-	trace("show_square_state: show_square_state starts");
+	// trace("show_square_state: show_square_state starts");
 
 	if (occupied(s)) // queen is there
 	{
@@ -164,5 +169,5 @@ void show_square_state(square_state s)
 		printf("   ");
 	}
 
-	trace("show_square_state: show_square_state ends");
+	// trace("show_square_state: show_square_state ends");
 }

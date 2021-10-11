@@ -45,7 +45,7 @@ int thought = 0; // to show 'thinking' -- i.e. that the program hasn't crashed
 */
 void init_game_tree(game_tree *tp, bool e, void *o, int l)
 {
-	trace("game_tree: initialiser starts");
+	// trace("game_tree: initialiser starts");
 
 	*tp = (game_tree)malloc(sizeof(struct game_tree_int));
 	if (e)
@@ -57,7 +57,7 @@ void init_game_tree(game_tree *tp, bool e, void *o, int l)
 		init_t_node(&((*tp)->root), o, l);
 	}
 
-	trace("game_tree: initialiser ends");
+	// trace("game_tree: initialiser ends");
 }
 
 /*
@@ -87,7 +87,7 @@ bool is_empty_game_tree(game_tree t)
 */
 void *get_data(game_tree t)
 {
-	trace("get_data: get_data starts");
+	// trace("get_data: get_data starts");
 
 	if (is_empty_game_tree(t))
 	{
@@ -95,7 +95,7 @@ void *get_data(game_tree t)
 		exit(1);
 	}
 
-	trace("get_data: get_data ends");
+	// trace("get_data: get_data ends");
 	return get_t_node_data(t->root);
 }
 
@@ -129,7 +129,7 @@ game_tree get_child(game_tree t)
 {
 	game_tree c;
 
-	trace("get_child: get_child starts");
+	// trace("get_child: get_child starts");
 
 	if (is_empty_game_tree(t))
 	{
@@ -140,7 +140,7 @@ game_tree get_child(game_tree t)
 	init_game_tree(&c, true, NULL, -1);
 	c->root = get_t_node_child(t->root);
 
-	trace("get_child: get_child ends");
+	// trace("get_child: get_child ends");
 	return c;
 }
 
@@ -218,9 +218,9 @@ void set_level(game_tree t, int l)
 	*
 	*	param c game_tree to be set as eldest child of current game tree
 */
-void set_child(game_tree t, game_tree c)
+void set_child(game_tree t, game_tree c) //changed
 {
-	set_t_node_child(t->root, c);
+	set_t_node_child(t->root, c->root);
 }
 
 /*
@@ -298,12 +298,50 @@ game_tree build_gameBF(game_tree t, queue q, int d)
 */
 void generate_levelDF(game_tree t, stack s)
 {
-	// COMPLETE ME !
+	t_node node;
+	int row = get_level(t) + 2; // since level is zero indexed in assig_three221.c file
 
-	// if (abs(row1 - row2) == abs(col1 - col2))
-	// {
-	// 	//check diagonals
-	// }
+	int column = 0;
+	bool com = true;
+	void *tos = top(s);
+	game_tree new_level;
+
+	int level; // the level of the current node
+
+	while (tos != NULL)
+	{
+		new_level = (game_tree)tos;
+		column = DIMENSION - size(s) + 1;
+		if (valid((game_state)get_data(t), row, column) && !clash((game_state)get_data(t), row, column))
+		{
+			set_child(t, new_level); //todo: fix set_child
+			stack temp_stack;
+			init_stack(&temp_stack);
+			if (!valid((game_state)get_data(new_level), row + 1, column))
+			{
+				return;
+			}
+			for (int column = DIMENSION; column > 0; column--)
+			{
+				game_state new_game_state = clone(get_data(new_level));
+				land(new_game_state, row + 1, column);
+				game_tree new_game_tree;
+				init_game_tree(&new_game_tree, false, new_game_state, row);
+				push(temp_stack, new_game_tree);
+			}
+			generate_levelDF(new_level, temp_stack);
+
+			if (get_child(new_level)->root != NULL)
+			{
+				// solution found
+				return;
+			}
+			set_t_node_child(t->root, NULL); // remove the child if furthur queen placement was not possible.
+		}
+		pop(s);
+
+		tos = top(s);
+	}
 }
 /*
 *	build_gameDF
@@ -329,11 +367,38 @@ void generate_levelDF(game_tree t, stack s)
 */
 game_tree build_gameDF(game_tree t, stack s, int d)
 {
-	time_t tt;
-	srand((unsigned)time(&tt));
-	// square_state ss = get_square((game_state)get_data(t), 0, rand() % d);
-	land(g, 0, rand() % d);
-	generate_levelDF(t, s)
+	time_t seed_value;		   // seed value for time random number generator
+	game_tree final_game_tree; // final game_tree to be returned
+	t_node node;
+	game_state new_game_state;
+
+	bool com = true;
+	int row = 1;
+	srand((unsigned)time(&seed_value));
+	int col = rand() % d + 1;
+	land((game_state)get_data(t), 1, col);
+	clone((game_state)get_data(t));
+
+	for (int column = DIMENSION; column > 0; column--)
+	{
+
+		new_game_state = clone((game_state)get_data(t));
+
+		land(new_game_state, row + 1, column);
+
+		game_tree new_game_tree;
+		init_game_tree(&new_game_tree, false, new_game_state, row);
+
+		push(s, new_game_tree);
+	}
+	generate_levelDF(t, s);
+	while (t->root != NULL)
+	{
+		final_game_tree = t;
+		t = get_child(t);
+	}
+
+	return final_game_tree;
 }
 
 /*

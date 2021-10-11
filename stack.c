@@ -58,6 +58,11 @@ bool is_empty_stack(stack s)
 */
 void *top(stack s)
 {
+	if (is_empty_stack(s))
+	{
+		return NULL;
+	}
+
 	return get_data_node(s->tos);
 }
 
@@ -71,12 +76,14 @@ void *top(stack s)
 */
 void pop(stack s)
 {
-	node current = s->tos;				// node at the top of the stack
-	node next = get_next_node(current); // node pointed by the node at top of the stack
+
+	node current = s->tos; // node at the top of the stack
 	if (is_empty_stack(s))
 	{
+		trace("stack empty");
 		return;
 	}
+	node next = get_next_node(current); // node pointed by the node at top of the stack
 	free(current);
 	current = NULL;
 	s->tos = next;
@@ -97,15 +104,27 @@ void pop(stack s)
 */
 void push(stack s, void *o)
 {
-	node new_node;						// new node to be push onto the stack
-	node current = s->tos;				// node at the top of the stack
-	node next = get_next_node(current); // node pointed by the node at top of the stack
+	node new_node;		   // new node to be push onto the stack
+	node current = s->tos; // node at the top of the stack
 
 	init_node(&new_node, o);
-	s->tos = new_node;
 	set_next_node(new_node, current);
+	s->tos = new_node;
 }
-
+/*
+	return the size of the stack
+*/
+int size(stack s)
+{
+	node current = s->tos; // node at the top of the stack
+	int size = 0;		   // size of the stack
+	while (current != NULL)
+	{
+		size++;
+		current = get_next_node(current);
+	}
+	return size;
+}
 /*
 *	to_string_stack
 *	String conversion for stack
