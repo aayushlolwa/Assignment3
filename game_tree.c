@@ -218,7 +218,7 @@ void set_level(game_tree t, int l)
 	*
 	*	param c game_tree to be set as eldest child of current game tree
 */
-void set_child(game_tree t, game_tree c) //changed
+void set_child(game_tree t, game_tree c)
 {
 	set_t_node_child(t->root, c->root);
 }
@@ -236,7 +236,7 @@ void set_child(game_tree t, game_tree c) //changed
 */
 void set_sibling(game_tree t, game_tree s)
 {
-	set_t_node_sibling(t->root, s);
+	set_t_node_sibling(t->root, s->root);
 }
 
 /*
